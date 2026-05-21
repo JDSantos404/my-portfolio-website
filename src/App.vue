@@ -19,5 +19,4 @@
   </main>
   <Footer />
 
-
 </template>
