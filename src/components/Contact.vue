@@ -7,7 +7,7 @@
     const notyf = new Notyf();
 
 
-    const WEB3FORMS_ACCESS_KEY = "8a3666cf-2d3b-4ac3-ba08-258040b8c205";
+    const WEB3FORMS_ACCESS_KEY = "3ef59ef3-5d65-4167-aa9d-d67d2aad276f";
 
     const subject = ref("");
     const name = ref("");
