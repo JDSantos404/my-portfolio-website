@@ -174,9 +174,13 @@
                                     v-model="message"
                                     class="form-control contact-input contact-textarea" required></textarea>
                                 </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-teal btn-lg contact-submit">Send Message</button>
-                                </div>
+                                <button
+                                  type="submit"
+                                  class="btn btn-teal btn-lg contact-submit"
+                                  :disabled="!recaptchaToken || isLoading"
+                                >
+                                  {{ isLoading ? "Sending..." : "Send Message" }}
+                                </button>
                             </div>
 
                             <div class="d-flex justify-content-start mt-2">
