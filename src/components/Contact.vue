@@ -18,12 +18,10 @@
     const isLoading = ref(false);
 
 
-    const submitForm = async() => {
-
+    const submitForm = async () => {
         isLoading.value = true;
 
         try {
-
             const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: {
@@ -32,7 +30,7 @@
                 },
                 body: JSON.stringify({
                     access_key: WEB3FORMS_ACCESS_KEY,
-                    subject: subject,
+                    subject: subject.value,
                     name: name.value,
                     email: email.value,
                     phone: phone.value,
@@ -42,22 +40,19 @@
 
             const result = await response.json();
 
-            if(result.success) {
-                console.log(result)
-
-                isLoading.value = false;
+            if (result.success) {
+                console.log(result);
                 notyf.success("Message sent!");
             }
 
-        } catch(error) {
+        } catch (error) {
             console.log(error);
-
-            isLoading.value = false;
             notyf.error("Failed to send message");
         } finally {
+            isLoading.value = false;
             resetRecaptcha();
         }
-    }
+    };
 
     /*recaptcha integration*/
 
