@@ -61,6 +61,9 @@
     const recaptchaContainer = ref(null);
     const recaptchaWidgetId = ref(null);
     const recaptchaToken = ref('');
+    const captchaSize = window.innerWidth < 576
+    ? 'compact'
+    : 'normal';
 
 
     function onRecaptchaSuccess(token) {
@@ -79,7 +82,8 @@
 
         recaptchaWidgetId.value = window.grecaptcha.render(recaptchaContainer.value, {
             sitekey: SITE_KEY,
-            size: 'normal',
+            theme: 'dark',
+            size: captchaSize,
             callback: onRecaptchaSuccess,
             'expired-callback': onRecaptchaExpired
         });
@@ -183,7 +187,7 @@
                                 </button>
                             </div>
 
-                            <div class="d-flex justify-content-start mt-2">
+                            <div class="recaptcha-wrapper mt-3">
                                 <div ref="recaptchaContainer"></div>
                             </div>
 
